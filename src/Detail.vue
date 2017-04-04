@@ -17,7 +17,7 @@ export default {
   },
   mounted () {
 
-    this.$http.get('https://www.cafetime.cc/jvmc/' + this.$route.query.name + '.md').then(response => {
+    this.$http.get('/jvmc/data' + this.$route.query.name + '.md').then(response => {
       var temp = response.data;
       this.content = marked(temp);
     }, response => {
