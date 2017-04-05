@@ -1,4 +1,4 @@
-### aload
+### aaload
 
 ----
 
@@ -8,28 +8,26 @@
 
 **格式**
 
-| aload  |
+| aaload        |
 | --------:   |
-| index   |
 
 
 **结构**
 ```
-aload = 25(0x19)
+aaload = 50（0x32）
 ```
 
 **操作数栈**
 ```
-... →
-..., objectref
+...,arrayref，index →
+...,value
 ```
 
 **描述**
 
-index 是一个代表当前栈帧中局部变量表的索引的无符号 byte 类 型整数，index 作为索引定位的局部变量必须为 reference 类型，称为
-objectref。指令执行后，objectref 将会压入到操作数栈栈顶。
+arrayref 必须是一个 reference 类型的数据，它指向一个组件类型为 reference 的数组，index 必须为 int 类型。指令执行后，arrayref 和 index 同时从操作数栈出栈，index 作为索引定位到数组中的 reference 类型值将压入到操作数栈中。
 
 
-**注意**
+**运行时异常**
 
-aload 指令无法被用于加载类型为 returnAddress 类型的数据到操作数栈 中，这点是特意设计成与 astore 指令不相对称的(astore 指令可以操作returnAddress 类型的数据)。aload 操作码可以与 wide 指令联合一起实现使用 2 个字节长度的无符号 byte 型数值作为索引来访问局部变量表。
+如果 arrayref 为 null，aaload 指令将抛出 NullPointerException 异 常。另外，如果 index 不在 arrayref 所代表的数组上下界范围中，aaload 指 令将抛出 ArrayIndexOutOfBoundsException 异常。
