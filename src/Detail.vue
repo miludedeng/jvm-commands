@@ -23,10 +23,10 @@ export default {
       temp = temp.replace(/</g,'&lt;')
       temp = temp.replace(/</g,'&gt;')
       temp = marked(temp)
+      temp = temp.replace(/<td\sstyle="text-align:right"><\/td>/g,'')
       temp = temp.replace(/th\sstyle="text-align:right"/g, 'th style="text-align:center"')
                 .replace(/td\sstyle="text-align:right"/g, 'td style="text-align:center"')
       temp = temp.replace(/<li>/g, '<li style="display:list-item">')
-      temp = temp.replace(/<td\sstyle="text-align:right"><\/td>/g,'')
       this.content = temp
     }, response => {
       alert("server error");
