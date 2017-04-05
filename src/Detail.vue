@@ -16,10 +16,16 @@ export default {
     }
   },
   mounted () {
-
-    this.$http.get('/jvmc/data/' + this.$route.query.name + '.md').then(response => {
-      var temp = response.data;
-      this.content = marked(temp);
+    this.$http.get(this.$serverPath + this.$route.query.name + '.md').then(response => {
+      var temp = response.data
+      temp = temp.replace(/\\</g,'<')
+      temp = temp.replace(/\\>/g,'>')
+      temp = temp.replace(/</g,'&lt;')
+      temp = temp.replace(/</g,'&gt;')
+      temp = marked(temp)
+      //temp = temp.replace(/<ul>/g, '<ul class="list-group">').replace(/<li>/g, '<li class="list-group-item">')
+      temp = temp.replace(/<td\sstyle="text-align:right"><\/td>/g,'')
+      this.content = temp
     }, response => {
       alert("server error");
     })
@@ -40,9 +46,11 @@ export default {
   border-radius: 0.2em;
   font-family: '微软雅黑';
   font-weight: 400;
+  font-size: 16px;
 }
 .detail-panel strong {
   font-weight: 700;
+  font-size:18px;
 }
 table {
   margin-bottom: 20px
@@ -54,5 +62,16 @@ table th {
 table td {
   border:1px solid #bbb;
   padding: 5px;
+}
+.detail-panel {
+  padding: 40px;
+}
+hr {
+  border-top: 5px solid #eee;
+}
+pre {
+    color: #e60c94;
+    background-color: #fdfdfd;
+    border-radius: 3px;
 }
 </style>

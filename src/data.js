@@ -102,8 +102,6 @@ export default {
     'ixor',
     'jsr',
     'jsr_w',
-    'jvm_data_type1',
-    'jvm_data_type2',
     'l2d',
     'l2f',
     'l2i',
@@ -148,6 +146,8 @@ export default {
     'sipush',
     'swap',
     'tableswitch',
-    'wide'
+    'wide',
+    'jvm_data_type1',
+    'jvm_data_type2'
   ]
 }

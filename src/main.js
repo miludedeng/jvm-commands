@@ -7,7 +7,7 @@ import axios from 'axios'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
-
+Vue.prototype.$serverPath = 'https://www.cafetime.cc/jvmc/data/'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -15,3 +15,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+console.log(Vue.config)
