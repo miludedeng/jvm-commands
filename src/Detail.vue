@@ -23,7 +23,7 @@ export default {
       temp = temp.replace(/</g,'&lt;')
       temp = temp.replace(/</g,'&gt;')
       temp = marked(temp)
-      //temp = temp.replace(/<ul>/g, '<ul class="list-group">').replace(/<li>/g, '<li class="list-group-item">')
+      temp = temp.replace(/<li>/g, '<li style="display:list-item">')
       temp = temp.replace(/<td\sstyle="text-align:right"><\/td>/g,'')
       this.content = temp
     }, response => {
