@@ -1,6 +1,6 @@
 <template>
 <div id="app" class="container">
-  <ul>
+  <ul class="idx-list">
     <li class="col-md-3 search">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
@@ -66,6 +66,10 @@ body {
 
 ul li {
   display: block;
+}
+
+.idx-list {
+  padding-left: 0px;
 }
 
 .search div input {
